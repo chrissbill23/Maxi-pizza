@@ -1,0 +1,78 @@
+# Insiemi
+
+set Pizze := 1 2 3 4 5 6 7;
+set Giorni := 1 2 3 4 5 6;
+set Fornitori := A B C D E ;
+set Materie := pom fa moz;
+set Orari := 1 2 3 4;
+set Lavoratori := worker1 worker2 worker3 marco marcowife;
+set free_cost_Lavoratori := marco marcowife;
+
+# Definizioni parametri
+param G := 500;
+param costi_fissi := 3000;
+param costi_fissi_ing := 200;
+param P := 1 5
+		   2 7
+		   3 8
+		   4 6.5
+		   5 9.6
+		   6 10
+		   7 11;
+param Q_st (tr):
+	   1     2     3     4     5     6     7    :=
+1      15    11    17    12    10    12    8    
+2      15    9     13    13    8     15    12   
+3	   18    14    14    12    11    13    10  
+4      17    15    9     16    10    19    9   
+5      18    16    18    11    13    17    16   
+6      19    16    12    11    14    15    8  
+;
+
+
+param Pr (tr):
+	  A     B     C      D     E :=
+pom  0.45  0.42  0.51  0.47  0.44
+fa   1.29  1.39  1.19  1.39  1.25
+moz  11.0  12.0  13.0  14.0  13.0
+; 
+param Ing := 
+pom  150
+fa   125
+moz  200
+;
+
+param Perc_inv := 0.4;
+param scontoC := 3;
+param cond_scontoC := 20;
+param scontoD := 15;
+param cond_scontoD := 80;
+param scontoPizza := 0.1; 
+param maxSconti := 2;
+param IncrDPizza := 
+		   1 0.4
+		   2 0.27
+		   3 0.25
+		   4 0.3
+		   5 0.2
+		   6 0.2
+		   7 0.2;  
+param den (tr): 
+	   1    2    3     4 :=
+1     0.6  0.3  0.08  0.02
+2     0.5  0.4  0.09  0.01
+3     0.55 0.25 0.12  0.08
+4     0.65 0.25 0.05  0.05
+5     0.6 0.3  0.07  0.03
+6     0.6  0.32 0.07  0.01
+;
+param paga := 7;
+param max_pizza:= 
+worker1   20
+worker2   20
+worker3   20
+marco     20
+marcowife 17
+;
+param T := 1000;
+param bigM := 2000000000;

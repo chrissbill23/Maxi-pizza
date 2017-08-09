@@ -1,0 +1,34 @@
+reset; # cancella dati memorizzati
+
+model modello.mod; # carica il modello
+data dati.dat; # carica i dati
+
+option solver cplex; 
+solve; 
+
+printf "\n\nSOLUZIONE Funzione obbiettivo:\n";
+display GuadagnoSettimanale;
+
+printf "\n\nSOLUZIONE quantità massima:\n";
+display {i in Pizze, j in Giorni} qt[i,j];
+
+printf "\n\nSOLUZIONE sconti:\n";
+display {i in Pizze, j in Giorni} s[i,j];
+
+printf "\n\nSOLUZIONE guadagni giornalieri:\n";
+display {j in Giorni} g[j];
+
+printf "\n\nSOLUZIONE costi variabili giornalieri:\n";
+display {j in Giorni} costo_totale_variabile[j];
+
+printf "\n\nSOLUZIONE variazine ricavo:\n";
+display {i in Pizze, j in Giorni} deltas[i,j];
+
+printf "\n\nSOLUZIONE residui giornalieri in grammi:\n";
+display { m in Materie, j in Giorni} r[m,j];
+
+printf "\n\nSOLUZIONE orario dipendenti:\n";
+display {w in Lavoratori, h in Orari, j in Giorni}l[w,h,j];
+
+printf "\n\nSOLUZIONE kg di ingredienti comprati:\n";
+display{f in Fornitori, m in Materie, j in Giorni}qting[f, m, j]
